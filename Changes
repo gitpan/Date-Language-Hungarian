@@ -1,0 +1,6 @@
+Revision history for Perl extension Date::Language::Hungarian.
+
+0.01  Sat Apr  3 19:31:17 2004
+	- original version; created by h2xs 1.21 with options
+		-Xn Date::Language::Hungarian
+
