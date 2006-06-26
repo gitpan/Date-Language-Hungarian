@@ -1,5 +1,8 @@
 Revision history for Perl extension Date::Language::Hungarian.
 
+0.011 Mon Jun 26 16:01:00 2006
+	- repackaged and removed typo that upset FreeBSD; fixed date suffix; fixed yy/mm/dd
+
 0.01  Sat Apr  3 19:31:17 2004
 	- original version; created by h2xs 1.21 with options
 		-Xn Date::Language::Hungarian

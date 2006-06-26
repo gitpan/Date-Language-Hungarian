@@ -10,12 +10,31 @@
 
 package Date::Language::Hungarian;
 
-use Strict;
+=head1 NAME
+
+Date::Language::Hungarian - Magyar format for Date::Format
+
+=head1 SYNOPSIS
+
+
+
+See L<Date::Format>.
+
+=head1 AUTHOR
+
+Paula Goddard (paula -at- paulacska -dot- com)
+
+=head1 LICENCE
+
+Made available under the same terms as Perl itself.
+
+=cut
+
+use strict;
 use warnings;
-use Date::Language ();
-use vars qw(@ISA @DoW @DoWs @MoY @MoYs @AMPM @Dsuf %MoY %DoW $VERSION);
-@ISA = qw(Date::Language);
-$VERSION = "0.01";
+use base "Date::Language";
+use vars qw( @DoW @DoWs @MoY @MoYs @AMPM @Dsuf %MoY %DoW $VERSION);
+$VERSION = "0.011";
 
 @DoW = qw(Vasárnap Hétfõ Kedd Szerda Csütörtök Péntek Szombat);
 @MoY = qw(Január Február Marcius Április Május Június
@@ -24,7 +43,8 @@ $VERSION = "0.01";
 @MoYs = map { substr($_,0,3) } @MoY;
 @AMPM = qw(de. du.);
 
-@Dsuf = "." x 31;	# There is no 'th or 'nd in Hungarian, just a dot
+# There is no 'th or 'nd in Hungarian, just a dot
+@Dsuf = (".") x 31;
 
 @MoY{@MoY}  = (0 .. scalar(@MoY));
 @MoY{@MoYs} = (0 .. scalar(@MoYs));
@@ -39,5 +59,15 @@ sub format_b { $MoYs[$_[0]->[4]] }
 sub format_B { $MoY[$_[0]->[4]] }
 sub format_h { $MoYs[$_[0]->[4]] }
 sub format_p { $_[0]->[2] >= 12 ?  $AMPM[1] : $AMPM[0] }
+sub format_o { $_[0]->[3].'.' }
+
+
+
+sub format_D { &format_y . "." . &format_m . "." . &format_d  }
+
+sub format_y { sprintf("%02d",$_[0]->[5] % 100) }
+sub format_d { sprintf("%02d",$_[0]->[3]) }
+sub format_m { sprintf("%02d",$_[0]->[4] + 1) }
+
 
 1;

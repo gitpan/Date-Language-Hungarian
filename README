@@ -1,7 +1,7 @@
-Date/Language/Hungarian version 0.01
-====================================
+Date/Language/Hungarian version 0.011
+=====================================
 
-This is a first-pass Hungarian extension for
+This is the Hungarian extension for
 Date::Format, just-because-I-stumbled-across-it
 -and-my-wife-is-Hungarian release: if Graham or
 someone adds to docs to Date::Format, I'd be
