@@ -16,7 +16,21 @@ Date::Language::Hungarian - Magyar format for Date::Format
 
 =head1 SYNOPSIS
 
+	my $lang = Date::Language->new('Hungarian');
+	print $lang->time2str("%a %b %e %T %Y", time);
 
+	@lt = localtime(time);
+	print $lang->time2str($template, time);
+	print $lang->strftime($template, @lt);
+
+	print $lang->time2str($template, time, $zone);
+	print $lang->strftime($template, @lt, $zone);
+
+	print $lang->ctime(time);
+	print $lang->asctime(@lt);
+
+	print $lang->ctime(time, $zone);
+	print $lang->asctime(@lt, $zone);
 
 See L<Date::Format>.
 
@@ -34,11 +48,11 @@ use strict;
 use warnings;
 use base "Date::Language";
 use vars qw( @DoW @DoWs @MoY @MoYs @AMPM @Dsuf %MoY %DoW $VERSION);
-$VERSION = "0.011";
+$VERSION = "0.012";
 
 @DoW = qw(Vasárnap Hétfõ Kedd Szerda Csütörtök Péntek Szombat);
-@MoY = qw(Január Február Marcius Április Május Június
-	  Július Augusztus Szeptember Oktober November December);
+@MoY = qw(Január Február Március Április Május Június
+	  Július Augusztus Szeptember Október November December);
 @DoWs = map { substr($_,0,3) } @DoW;
 @MoYs = map { substr($_,0,3) } @MoY;
 @AMPM = qw(de. du.);

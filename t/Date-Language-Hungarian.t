@@ -19,9 +19,6 @@ is( $lang->time2str("%o", $time_t), '25.', 'magyar date suffix');
 
 is( $lang->time2str("%D", $time_t), '95.12.25', 'magyar date form yy/mm/dd');
 
-
-
-
 __END__
 
             %%      PERCENT
